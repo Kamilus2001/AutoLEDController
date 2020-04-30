@@ -17,7 +17,7 @@ class AutoLED:
         print(self.x)
         print(self.y)
         f.close()
-        popt, pcov = curve_fit(self.exponential_func, self.x, self.y)
+        popt, pcov = curve_fit(self.poly_func, self.x, self.y)
         f = open(self.params, 'w')
         for p in popt:
             f.write("{};".format(p))
@@ -39,7 +39,7 @@ class AutoLED:
         v = int(value)
         return v
     @classmethod
-    def exponential_func(cls, x, a, b, c):
+    def poly_func(cls, x, a, b, c):
         return a*pow(x, b) + c
 
 
